@@ -14,7 +14,7 @@ class SudokusController < ApplicationController
   # POST /sudokus
   # POST /sudokus.json
   def create
-    @sudoku = Sudoku.new(sudoku_params)
+    @sudoku = Sudoku.new
     respond_to do |format|
       if @sudoku.save
         format.html { redirect_to @sudoku, notice: 'Sudoku was successfully created.' }
@@ -40,10 +40,5 @@ class SudokusController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_sudoku
       @sudoku = Sudoku.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def sudoku_params
-      params.require(:sudoku).permit(:ncolumns)
     end
 end

@@ -1,9 +1,3 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Ncolumns:</strong>
-  <%= @sudoku.ncolumns %>
-</p>
-
-<%= link_to 'Edit', edit_sudoku_path(@sudoku) %> |
-<%= link_to 'Back', sudokus_path %>
+<%= link_to 'Back', sudoku_path(@sudoku), method: :delete %>
