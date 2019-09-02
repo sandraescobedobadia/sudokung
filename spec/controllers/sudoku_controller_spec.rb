@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe SudokusController, type: :controller do
-  before do
-    @params = { 'sudoku' => { 'ncolumns' => 3 } }
-  end
-
   describe 'GET #new' do
     it 'assigns @sudoku' do
       # get :new
