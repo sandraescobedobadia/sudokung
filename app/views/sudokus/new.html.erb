@@ -1,19 +1,13 @@
 <h1>New Sudoku</h1>
-
-<%= form_for(@sudoku) do |form| %>
-  <% if @sudoku.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sudoku.errors.count, "error") %> prohibited this sudoku from being saved:</h2>
-
-      <ul>
-        <% @sudoku.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= form_with(model: @sudoku, local: true) do |form| %>
+  <% i = 0 %>
+  <%= form.fields_for :rows do |row_form| %>
+    <% j = 0 %>
+    <%= row_form.fields_for :values do |value_form| %>
+      <%= value_form.hidden_field :number, value: @values[i][j] %>
+      <% j += 1 %>
+    <% end %>
+    <% i += 1 %>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit %>
 <% end %>
