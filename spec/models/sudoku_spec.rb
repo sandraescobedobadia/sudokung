@@ -1,40 +1,61 @@
 require 'rails_helper'
 
 RSpec.describe Sudoku, type: :model do
-  # it { should belong_to(:user) }
-  # it { should belong_to(:departured).class_name('Airport')
-  #                                   .with_foreign_key('departured_id') }
-  # it { should belong_to(:arrived).class_name('Airport')
-  #                                 .with_foreign_key('arrived_id') }
-
   before(:all) do
-    # @admin = create(:user, role: 'admin')
-    # @user = create(:user)
-    # @airport1 = create(:airport, iata_code: 'VLC')
-    # @airport2 = create(:airport, iata_code: 'LGW')
-    # @flight = create(:flight, user_id: @user.id, departured_id: @airport1.id,
-    #                   arrived_id: @airport2.id)
+    @sudoku = Sudoku.generate
   end
 
-  context 'generate a new sudoku values' do
+  context 'generate a new sudoku' do
+    let(:n_columns) { 9 }
+
     it 'it has 9 rows' do
-      expect(Sudoku.generate.size).to Sudoku::NCOLUMNS
+      expect(@sudoku.size).to eq(n_columns)
     end
 
     it 'it has 9 columns' do
-
+      columns = (0..(@sudoku.size-1)).count { |index| @sudoku[index].size == n_columns }
+      expect(columns).to eq(@sudoku.size)
     end
 
-    it '' do
+    it 'it column values are differents' do
+      repeat = @sudoku.transpose.reject do |column|
+        column.size == column.uniq.size
+      end
+      expect(repeat).to be_empty
+    end
 
+    it 'subsquare values are differents' do
+      subsquares = []
+      (0..9).each { |index| subsquares[index] = [] }
+      @sudoku[0..2].each do |row|
+        subsquares[0].push(row[0..2])
+        subsquares[1].push(row[3..5])
+        subsquares[2].push(row[6..8])
+      end
+      subsquares[0] = subsquares[0].flatten
+      subsquares[1] = subsquares[1].flatten
+      subsquares[2] = subsquares[2].flatten
+      @sudoku[3..5].each do |row|
+        subsquares[3].push(row[0..2])
+        subsquares[4].push(row[3..5])
+        subsquares[5].push(row[6..8])
+      end
+      subsquares[3] = subsquares[3].flatten
+      subsquares[4] = subsquares[4].flatten
+      subsquares[5] = subsquares[5].flatten
+      @sudoku[6..8].each do |row|
+        subsquares[6].push(row[0..2])
+        subsquares[7].push(row[3..5])
+        subsquares[8].push(row[6..8])
+      end
+      subsquares[6] = subsquares[6].flatten
+      subsquares[7] = subsquares[7].flatten
+      subsquares[8] = subsquares[8].flatten
+      repeat = 0
+      subsquares.each do |subsquare|
+        repeat += 1 if subsquare.uniq.size < subsquare.size
+      end
+      expect(repeat).to eq(0)
     end
   end
-  # context "with 2 or more comments" do
-  #   it "orders them in reverse chronologically" do
-  #     post = Post.create!
-  #     comment1 = post.comments.create!(:body => "first comment")
-  #     comment2 = post.comments.create!(:body => "second comment")
-  #     expect(post.reload.comments).to eq([comment2, comment1])
-  #   end
-  # end
 end
