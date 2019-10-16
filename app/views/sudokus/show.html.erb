@@ -2,7 +2,7 @@
   <div class="col-md-12 text-right">
     <%= link_to 'Atrás', sudoku_path(@sudoku), method: 'delete',
                 class: "d-print-none mr-5" %>
-    <%= link_to 'Imprimir', sudoku_path(@sudoku) %>
+    <%= link_to 'Imprimir', sudoku_path(@sudoku), class: 'd-print-none printer' %>
   </div>
 </div>
 
@@ -15,6 +15,14 @@
   </div>
 </div>
 <div class="row ml-5 mr-5">
+</div>
+<div class="row m-5">
+  <div class="col-md-2">
+    <div class="h4 d-print-none">IMPORTANTE: </div>
+  </div>
+  <div class="col-md-10">
+    <div class="d-print-none">Imprime este sudoku en papel reciclado y/o usado siempre que te sea posible. El planeta te lo agradecerá. 🙏🏻🌍</div>
+  </div>
 </div>
 
 <div class="row justify-content-md-center m-5">
