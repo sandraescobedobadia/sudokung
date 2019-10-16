@@ -1,0 +1,11 @@
+<div class="col-md-3 m-0 p-0">
+  <table class="table table-bordered" >
+    <% (1..square.size).each do |row| %>
+      <tr>
+        <% (1..square[0].size).each do |column| %>
+          <td class="text-center"><%= square[row-1][column-1] %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

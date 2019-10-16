@@ -1,3 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="row m-5">
+  <div class="col-md-12 text-right">
+    <%= link_to 'Atrás', sudoku_path(@sudoku), method: 'delete',
+                class: "d-print-none mr-5" %>
+    <%= link_to 'Imprimir', sudoku_path(@sudoku) %>
+  </div>
+</div>
 
-<%= link_to 'Back', sudoku_path(@sudoku), method: :delete %>
+<div class="row ml-5 mr-5">
+  <div class="col-md-2">
+    <div class="h4">Normas: </div>
+  </div>
+  <div class="col-md-10">
+    <div class="notes">El objetivo del sudoku es rellenar una cuadrícula de 9 × 9 celdas dividida en subcuadrículas de 3 × 3 con las cifras del 1 al 9 partiendo de algunos números ya dispuestos en algunas de las celdas y sin repetirse en una misma fila, columna o subcuadrícula. </div>
+  </div>
+</div>
+<div class="row ml-5 mr-5">
+</div>
+
+<div class="row justify-content-md-center m-5">
+  <div class="col-md-12">
+    <div class="h1">¡Adelante!</div>
+  </div>
+</div>
+
+<% for x in (0..2) do %>
+  <div class="row justify-content-md-center ml-5 mr-5">
+  <% for y in (0..2) do %>
+    <% square = @sudoku.get_square(x,y) %>
+    <%= render 'square', square: square %>
+  <% end %>
+  </div>
+<% end %>

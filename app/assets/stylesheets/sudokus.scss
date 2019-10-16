@@ -1,3 +1,16 @@
 // Place all the styles related to the Sudokus controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+  height: 100%;
+}
+
+td {
+  font-size: 2.5rem;
+}
+
+.h1 {
+  font-weight: bold;
+  text-align: center;
+}
