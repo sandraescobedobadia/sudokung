@@ -58,4 +58,34 @@ RSpec.describe Sudoku, type: :model do
       expect(repeat).to eq(0)
     end
   end
+
+  context 'generate gaps' do
+    let(:n_columns) { 9 }
+    let(:n_rows) { 9 }
+    let(:amount) { 36 }
+    let(:gaps) { Sudoku.generate_gaps.split('') }
+
+    it 'it has 81 chars' do
+      expect(gaps.size).to eq(n_columns * n_rows)
+    end
+
+    it 'it only has 0 and 1' do
+      elements = gaps.uniq
+      only_0_or_1 = elements.size == 2 && elements.count('0') == 1 && elements.count('0') == 1
+      expect(only_0_or_1).to be true
+    end
+
+    it 'two_gaps_in_square_row' do
+      two_gaps_in_square_row = true
+      gaps.each_with_index do |gap, index|
+        if (index + 1) % 3 == 0 && gap == '0'
+          if gaps[index - 2] == gaps[index - 1] &&
+            gaps[index - 2] == '0'
+            two_gaps_in_square_row = false
+          end
+        end
+      end
+      expect(two_gaps_in_square_row).to be true
+    end
+  end
 end
