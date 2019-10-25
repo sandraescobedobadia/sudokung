@@ -20,6 +20,7 @@ class SudokusController < ApplicationController
   # POST /sudokus.json
   def create
     @sudoku = Sudoku.new(sudoku_params)
+    @sudoku.gaps = Sudoku.generate_gaps
     respond_to do |format|
       if @sudoku.save
         format.html { redirect_to @sudoku }

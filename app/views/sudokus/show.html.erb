@@ -35,7 +35,8 @@
   <div class="row justify-content-md-center ml-5 mr-5">
   <% for y in (0..2) do %>
     <% square = @sudoku.get_square(x,y) %>
-    <%= render 'square', square: square %>
+    <% subgaps = Sudoku.calculate_subgaps(@sudoku.gaps, x, y) %>
+    <%= render 'square', square: square, subgaps: subgaps %>
   <% end %>
   </div>
 <% end %>
