@@ -1,24 +1,15 @@
-# README
+Sudokung is a sudokus generator for beginners and it's one of my side projects. It's simple, easy to understand and can be improved. But it's a start.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![screencast1](/images/screencast1.png)
 
-Things you may want to cover:
+![screencast2](/images/screencast2.png)
 
-* Ruby version
+## Future features
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* User managment
+* Can solve sudokus online
+* Sudokus managment
+* Scoring
+* Sudoku levels
+* App online
+* etc.
