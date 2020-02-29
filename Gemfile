@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'jquery-rails'
 gem 'rails-ujs', '~> 0.1.0'
 gem 'mysql2', '>= 0.4.4'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'sass-rails', '~> 5'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
